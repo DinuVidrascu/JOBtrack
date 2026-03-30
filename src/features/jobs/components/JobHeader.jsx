@@ -22,14 +22,14 @@ export default function JobHeader({ isDarkMode, toggleTheme, onOpenAdd }) {
         </div>
       </div>
       <div className="flex items-center gap-3 w-full sm:w-auto">
-        <button 
+        <button
           onClick={toggleTheme}
           className={`p-4 border rounded-2xl transition-all shadow-sm active:scale-90 ${isDarkMode ? 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-white'}`}
           title={isDarkMode ? "Mod Luminos" : "Mod Întunecat"}
         >
           {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
-        <button 
+        <button
           onClick={onOpenAdd}
           className="flex-1 sm:flex-none flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-2xl font-bold transition-all justify-center shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 group"
         >

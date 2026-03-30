@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AlertCircle, X, Trash2 } from 'lucide-react';
 
 const DeleteConfirm = ({ onConfirm, onCancel, isLoading }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 z-[60] transition-opacity duration-300">
       <div className="bg-white dark:bg-slate-900 rounded-[2rem] w-full max-w-sm shadow-2xl overflow-hidden p-8 text-center animate-in fade-in zoom-in slide-in-from-bottom-2 duration-300 border border-slate-100 dark:border-slate-800">

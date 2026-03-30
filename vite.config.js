@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const pwaOptions = {
   registerType: 'autoUpdate',
-  includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+  includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons.svg'],
   manifest: {
     name: 'JOBtrack - Job Tracker',
     short_name: 'JOBtrack',
@@ -14,17 +14,17 @@ const pwaOptions = {
     background_color: '#f8fafc',
     icons: [
       {
-        src: 'logo.png',
+        src: 'android-chrome-192x192.png',
         sizes: '192x192',
         type: 'image/png'
       },
       {
-        src: 'logo.png',
+        src: 'android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png'
       },
       {
-        src: 'logo.png',
+        src: 'android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any maskable'

@@ -21,6 +21,14 @@ const JobForm = ({ job, onSubmit, onClose, isLoading, isDark }) => {
     if (job) {
       setFormData(prev => ({ ...prev, ...job }));
     }
+    
+    // Blochează scroll-ul paginii când formularul este deschis
+    document.body.style.overflow = 'hidden';
+    
+    // Reactivăm scroll-ul când formularul este închis
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [job]);
 
   const handleSubmit = (e) => {
