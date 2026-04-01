@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StatCard = ({ title, count, icon: Icon, color, className = "", isCompact = false, isDark = false }) => {
+const StatCard = React.memo(({ title, count, icon: Icon, color, className = "", isCompact = false, isDark = false }) => {
   return (
     <div className={`
       ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'} 
@@ -33,6 +33,6 @@ const StatCard = ({ title, count, icon: Icon, color, className = "", isCompact =
       )}
     </div>
   );
-};
+});
 
 export default StatCard;

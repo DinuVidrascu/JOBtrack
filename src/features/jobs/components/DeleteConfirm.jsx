@@ -4,10 +4,15 @@ import { AlertCircle, X, Trash2 } from 'lucide-react';
 const DeleteConfirm = ({ onConfirm, onCancel, isLoading }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && !isLoading) onCancel();
+    };
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isLoading, onCancel]);
 
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 z-[60] transition-opacity duration-300">

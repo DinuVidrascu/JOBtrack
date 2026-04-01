@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const pwaOptions = {
   registerType: 'autoUpdate',
-  includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons.svg'],
+  includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
   manifest: {
     name: 'JOBtrack - Job Tracker',
     short_name: 'JOBtrack',

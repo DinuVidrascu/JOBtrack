@@ -21,15 +21,21 @@ const JobForm = ({ job, onSubmit, onClose, isLoading, isDark }) => {
     if (job) {
       setFormData(prev => ({ ...prev, ...job }));
     }
-    
     // Blochează scroll-ul paginii când formularul este deschis
     document.body.style.overflow = 'hidden';
-    
-    // Reactivăm scroll-ul când formularul este închis
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [job]);
+
+  // ESC key pentru a închide formularul
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && !isLoading) onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isLoading, onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,11 +55,12 @@ const JobForm = ({ job, onSubmit, onClose, isLoading, isDark }) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        setFormData({
-          ...formData,
+        // Folosim functional update pentru a evita stale closure
+        setFormData(prev => ({
+          ...prev,
           [field === 'cv' ? 'cvData' : 'clData']: reader.result,
           [field === 'cv' ? 'cvName' : 'clName']: file.name
-        });
+        }));
       };
       reader.onerror = () => {
         setFileError('Eroare la citirea fișierului.');

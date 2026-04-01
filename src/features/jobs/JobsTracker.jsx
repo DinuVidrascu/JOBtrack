@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { useJobs } from './hooks/useJobs';
 import { useTheme } from '../../hooks/useTheme';
+import { useToast } from '../../hooks/useToast';
 
 // Features Components
 import JobForm from './components/JobForm';
@@ -12,6 +13,7 @@ import JobFilters from './components/JobFilters';
 import JobFeed from './components/JobFeed';
 import JobLoading from './components/JobLoading';
 import JobAuthError from './components/JobAuthError';
+import Toast from '../../components/ui/Toast';
 
 export default function JobsTracker() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -25,6 +27,7 @@ export default function JobsTracker() {
     handleSaveJob, 
     handleDeleteJob 
   } = useJobs(user);
+  const { toasts, addToast } = useToast();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
@@ -42,27 +45,37 @@ export default function JobsTracker() {
     });
   }, [jobs, filter, search]);
 
-  const handleOpenAdd = () => {
+  const handleOpenAdd = useCallback(() => {
     setEditingJob(null);
     setIsFormOpen(true);
-  };
+  }, []);
 
-  const handleOpenEdit = (job) => {
+  const handleOpenEdit = useCallback((job) => {
     setEditingJob(job);
     setIsFormOpen(true);
-  };
+  }, []);
 
-  const handleSave = async (formData) => {
+  const handleSave = useCallback(async (formData) => {
     const success = await handleSaveJob(formData, editingJob?.id);
-    if (success) setIsFormOpen(false);
-  };
+    if (success) {
+      setIsFormOpen(false);
+      addToast(editingJob ? 'Aplicație actualizată!' : 'Aplicație adăugată!');
+    } else {
+      addToast('Eroare la salvare. Încearcă din nou.', 'error');
+    }
+  }, [handleSaveJob, editingJob, addToast]);
 
-  const handleDelete = async () => {
+  const handleDelete = useCallback(async () => {
     const success = await handleDeleteJob(jobToDelete);
-    if (success) setJobToDelete(null);
-  };
+    if (success) {
+      setJobToDelete(null);
+      addToast('Aplicație ștearsă!');
+    } else {
+      addToast('Eroare la ștergere. Încearcă din nou.', 'error');
+    }
+  }, [handleDeleteJob, jobToDelete, addToast]);
 
-  const handleDownloadCV = (cvData, fileName) => {
+  const handleDownloadCV = useCallback((cvData, fileName) => {
     if (!cvData) return;
     const a = document.createElement('a');
     a.href = cvData;
@@ -70,7 +83,7 @@ export default function JobsTracker() {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  };
+  }, []);
 
   if (authLoading || jobsLoading) {
     return <JobLoading />;
@@ -125,6 +138,8 @@ export default function JobsTracker() {
           isDark={isDarkMode}
         />
       )}
+
+      <Toast toasts={toasts} />
     </div>
   );
 }

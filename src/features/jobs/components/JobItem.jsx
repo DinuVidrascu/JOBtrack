@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import StatusBadge from '../../../components/ui/StatusBadge';
 
-const JobItem = ({ job, onEdit, onDelete, onDownload, isDark }) => {
+const JobItem = React.memo(({ job, onEdit, onDelete, onDownload, isDark }) => {
   return (
     <div className={`p-5 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'} border rounded-[2rem] shadow-sm hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex flex-col md:flex-row md:items-start justify-between gap-4 group animate-fade-in`}>
       <div className="flex-1 min-w-0">
@@ -96,6 +96,6 @@ const JobItem = ({ job, onEdit, onDelete, onDownload, isDark }) => {
       </div>
     </div>
   );
-};
+});
 
 export default JobItem;

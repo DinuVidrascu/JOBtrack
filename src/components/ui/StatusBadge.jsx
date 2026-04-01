@@ -1,7 +1,7 @@
 import React from 'react';
 import { STATUSES } from '../../features/jobs/constants';
 
-const StatusBadge = ({ status }) => {
+const StatusBadge = React.memo(({ status }) => {
   const config = STATUSES[status.toUpperCase()] || STATUSES.APPLIED;
   
   return (
@@ -10,6 +10,6 @@ const StatusBadge = ({ status }) => {
       {config.label}
     </span>
   );
-};
+});
 
 export default StatusBadge;
