@@ -20,9 +20,8 @@ const JobForm = ({ job, onSubmit, onClose, isLoading, isDark }) => {
   useEffect(() => {
     if (job) {
       setFormData(prev => ({ ...prev, ...job }));
-    }
-    // Blochează scroll-ul paginii când formularul este deschis
-    
+    }             // ← închizi if-ul
+  }, [job]);      
   // ESC key pentru a închide formularul
   useEffect(() => {
     const handleKeyDown = (e) => {
