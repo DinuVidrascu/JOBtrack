@@ -64,41 +64,7 @@ export default function JobHeader({ isDarkMode, toggleTheme, onOpenAdd, user, on
         </div>
       </div>
 
-      {/* 2. Quick Links */}
-      <div className="flex flex-row flex-wrap lg:flex-nowrap items-center justify-center w-full lg:w-auto lg:flex-1 gap-2 mt-1 lg:mt-0">
-        <a 
-          href="https://www.rabota.md/ro/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all hover:scale-105 active:scale-95 ${isDarkMode ? 'bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-slate-600' : 'bg-slate-50 border-slate-200/70 hover:bg-white hover:shadow-sm hover:border-slate-200'}`}
-          title="Mergi la Rabota.md"
-        >
-          <img src="https://www.google.com/s2/favicons?domain=rabota.md&sz=128" alt="Rabota.md" className="w-4 h-4 rounded-full object-contain bg-white" />
-          <span className={`text-xs font-bold transition-colors ${isDarkMode ? 'text-slate-300 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'}`}>Rabota.md</span>
-        </a>
 
-        <a 
-          href="https://www.delucru.md/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all hover:scale-105 active:scale-95 ${isDarkMode ? 'bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-slate-600' : 'bg-slate-50 border-slate-200/70 hover:bg-white hover:shadow-sm hover:border-slate-200'}`}
-          title="Mergi la Delucru.md"
-        >
-          <img src="https://www.google.com/s2/favicons?domain=delucru.md&sz=128" alt="Delucru.md" className="w-4 h-4 rounded-full object-contain bg-white" />
-          <span className={`text-xs font-bold transition-colors ${isDarkMode ? 'text-slate-300 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'}`}>Delucru.md</span>
-        </a>
-
-        <a 
-          href="https://jobjob.md/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all hover:scale-105 active:scale-95 ${isDarkMode ? 'bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-slate-600' : 'bg-slate-50 border-slate-200/70 hover:bg-white hover:shadow-sm hover:border-slate-200'}`}
-          title="Mergi la JobJob.md"
-        >
-          <img src="https://www.google.com/s2/favicons?domain=jobjob.md&sz=128" alt="JobJob.md" className="w-4 h-4 rounded-full object-contain bg-white" />
-          <span className={`text-xs font-bold transition-colors ${isDarkMode ? 'text-slate-300 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'}`}>JobJob.md</span>
-        </a>
-      </div>
 
       {/* 3. Butoanele Desktop + Adaugă */}
       <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mt-2 lg:mt-0">
