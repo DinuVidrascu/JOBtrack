@@ -118,10 +118,10 @@ export default function JobsTracker() {
             canAdd={isUserSignedIn}
           />
 
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm">
+          <div className={`rounded-[2rem] border p-10 transition-all ${isDarkMode ? 'bg-slate-900 border-slate-800 shadow-none' : 'bg-white border-slate-200 shadow-sm'}`}>
             <div className="max-w-2xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl font-bold text-slate-950">Conectează-te cu Google</h2>
-              <p className="text-slate-600">
+              <h2 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>Conectează-te cu Google</h2>
+              <p className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>
                 Folosește același cont pe PC și pe telefon pentru a vedea aceleași aplicații.
               </p>
               <button
